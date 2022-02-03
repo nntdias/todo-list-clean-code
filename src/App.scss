@@ -1,0 +1,43 @@
+.App {
+  width: 100vw;
+  &-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 200px;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      padding: 7px 0;
+      font-size: 18px;
+      &-container {
+        padding: 20px;
+        display: flex;
+      }
+      &-first {
+        padding-right: 20px;
+      }
+      &-second {
+        padding-right: 20px;
+      }
+    }
+  }
+
+  .input-group {
+    input {
+      height: 50px;
+      width: 300px;
+      font-size: 20px;
+      padding: 10px;
+    }
+  }
+
+  .button {
+    padding: 15px 30px;
+    margin-left: 25px;
+  }
+}
