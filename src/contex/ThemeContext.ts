@@ -9,3 +9,5 @@ export const ThemeContext = React.createContext<ContextType>({
   itemBackgroundColor: "",
   itemColor: "",
 });
+
+export const ThemeContextAction = React.createContext<any>(() => {});

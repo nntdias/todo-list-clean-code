@@ -1,30 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import List from "./components/List";
-import useTodoItems from "./hooks/useTodoItems";
 import InputSearch from "./components/InputSearch";
 import ThemeProvider from "./contex/ThemeProvider";
 import "./App.scss";
+import Counter from "./components/Counter";
+import { useSelector } from "react-redux";
 
 const App: React.FC = () => {
-  const [filterText, setFilterText] = useState("");
-  const { todoItems } = useTodoItems(filterText);
-
-  const handleChange = (event: any) => {
-    const { value } = event.target;
-    setFilterText(value);
-  };
+  const items = useSelector((state: any) => [...state.todoItems]);
 
   return (
-    <ThemeProvider>
-      <div className="App">
-        <div className="App-container">
-          <div className="input-group">
-            <InputSearch value={filterText} onChange={handleChange} />
-          </div>
-          <List todoItems={todoItems} />
+    <div className="App">
+      <div className="App-container">
+        <div className="input-group">
+          <InputSearch />
+          <Counter />
         </div>
+        <ThemeProvider>
+          <List todoItems={items} />
+        </ThemeProvider>
+        <ThemeProvider>
+          <List todoItems={items} />
+        </ThemeProvider>
       </div>
-    </ThemeProvider>
+    </div>
   );
 };
 
