@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../contex/ThemeContext";
+import React from "react";
+import { useActions } from "../hooks/useActions";
+import { useTheme } from "../hooks/useTheme";
 
 type Props = {
   item: {
@@ -8,9 +9,8 @@ type Props = {
   };
 };
 
-const useTheme = () => useContext(ThemeContext);
-
 const Item = ({ item }: Props) => {
+  const { setBg } = useActions();
   const { itemBackgroundColor, itemColor } = useTheme();
 
   return (
@@ -18,6 +18,7 @@ const Item = ({ item }: Props) => {
       <div
         className="list-item-container"
         style={{ backgroundColor: itemBackgroundColor, color: itemColor }}
+        onClick={() => setBg()}
       >
         <div className="list-item-first">{item.id}</div>
         <div className="list-item-second">{item.text}</div>
